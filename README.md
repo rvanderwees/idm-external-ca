@@ -23,3 +23,4 @@ Steps included in the playbook:
 ## ToDo
 
 * The cert in `/usr/share/ipa/html/ca.crt` does not get updated after import. Hence its requireed to run `ipa-certupdate` after the last step.
+    * This is a known issus and is tracked in <https://bugzilla.redhat.com/show_bug.cgi?id=1549187>

@@ -26,7 +26,7 @@
       virt-install
         --virt-type kvm
         --name {{ idm_hostname }}
-        --memory 1024
+        --memory 2048
         --vcpus 1
         --location={{ libvirt_mountpoint }}
         --os-variant rhel7
@@ -205,8 +205,11 @@
     args:
       creates: /etc/ipa/ipa.crt
 
+  # FIXME: https://bugzilla.redhat.com/show_bug.cgi?id=1549187
+  - name: Run ipa-certupdate to deploy CA chain to /usr/share/ipa/html/ca.crt
+    command: /usr/sbin/ipa-certupdate
 
-  handlers:
+handlers:
   - name: Restart firewalld
     service: name=firewalld state=restarted
 
